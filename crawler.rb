@@ -9,11 +9,12 @@ Bundler.require
 class Crawler
   @@skip_num = 0
 
-  def initialize(url, name)
+  def initialize(url, name, progress_index)
     @agent = Mechanize.new
     @name = name.gsub(/\:/, "：").gsub(/\"/, "“").gsub(/\</, "《").gsub(/\>/, "》").gsub(/[\*\\\/\|]/, "-")
     @url = url
     @path = "results/#{@name}.pdf"
+    @progress_index = progress_index
 
     if Dir[@path].size > 0
       @@skip_num += 1
@@ -31,10 +32,10 @@ class Crawler
       work_q << file
     end
 
-    workers = (0..0).map do
-      Thread.new do
+    workers = (0..5).map do |i|
+      Thread.new(i) do |i|
         while file = work_q.pop(true)
-          self.new_from_path(file)
+          self.new_from_path(file, i)
         end
       end
     end
@@ -49,11 +50,11 @@ class Crawler
     list
   end
 
-  def self.new_from_path(path)
+  def self.new_from_path(path, progress_index)
     file = File.new(path, 'r')
     doc = Nokogiri::HTML(file)
     doc.css('a')[1..-1].each do |a|
-      self.new(a.attribute('href').value, a.text)
+      self.new(a.attribute('href').value, a.text, progress_index)
     end
   end
 
@@ -78,14 +79,20 @@ class Crawler
         http.request request do |response|
           total = response['Content-Length'].to_i
           finish = 0
+          control = 0
 
           File.open download_path, 'w+', binmode: true do |io|
             response.read_body do |chunk|
               io.write chunk
               finish += chunk.size
-              puts "#{@name}:#{finish.to_f / total * 100}%\n".colorize(:blue)
+              control += 1
+              if control > 80
+                puts "Progress #{@progress_index + 1}\t#{@name[0..10]}\t#{(finish.to_f / total * 100).to_s[0..-14]}%".colorize(:blue)
+                control = 0
+              end
             end
           end
+          puts "#{@name}:100%".colorize(:green)
           FileUtils.mv download_path, @path
         end
       end
@@ -93,9 +100,7 @@ class Crawler
     rescue => e
       File.delete "results/#{@name}.pdf"
       puts "Timeout".colorize(:red)
-      raise e
-
-      # self.download
+      self.download
     end
   end
 
