@@ -98,7 +98,6 @@ class Crawler
       end
 
     rescue => e
-      File.delete "results/#{@name}.pdf"
       puts "Timeout".colorize(:red)
       self.download
     end
