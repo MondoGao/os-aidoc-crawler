@@ -25,14 +25,14 @@ class Crawler
     end
   end
 
-  def self.start(path)
+  def self.start(path, progress_num)
     files = self.get_url_files(path)
     work_q = Queue.new
     files.each do |file|
       work_q << file
     end
 
-    workers = (0..5).map do |i|
+    workers = (0..progress_num - 1).map do |i|
       Thread.new(i) do |i|
         while file = work_q.pop(true)
           self.new_from_path(file, i)
@@ -73,7 +73,7 @@ class Crawler
       uri = URI(@real_url)
       download_path = "downloading/#{@name}.pdf.uncomplete"
 
-      Net::HTTP.start(uri.host, uri.port) do |http|
+      Net::HTTP.start(uri.host, uri.port, open_timeout: 600) do |http|
         request = Net::HTTP::Get.new uri
 
         http.request request do |response|
@@ -105,4 +105,4 @@ class Crawler
 
 end
 
-Crawler.start('links')
+Crawler.start('links', 3)
