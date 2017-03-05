@@ -5,13 +5,15 @@ require 'bundler/setup'
 Bundler.require
 
 class Crawler
+  @@skip_num = 0
 
   def initialize(url, name)
     @agent = Mechanize.new
-    @name = name
+    @name = name.gsub(/\:/, "：").gsub(/\"/, "“").gsub(/\</, "《").gsub(/\>/, "》").gsub(/[\*\\\/\|]/, "-")
     @url = url
-    if Dir["results/#{name}.pdf"].size > 0
-      puts "Skip #{name}\n".colorize(:light_yellow)
+    if Dir["results/#{@name}.pdf"].size > 0
+      @@skip_num += 1
+      puts "Skip #{@@skip_num}th #{@name}\n".colorize(:light_yellow)
     else
       self.get_real_url
       self.download
@@ -25,7 +27,7 @@ class Crawler
       work_q << file
     end
 
-    workers = (0...2).map do
+    workers = (0..3).map do
       Thread.new do
           while file = work_q.pop(true)
             self.new_from_path(file)
@@ -52,23 +54,34 @@ class Crawler
   end
 
   def get_real_url
-    page = @agent.get(@url)
-    @real_url = 'http://f.wanfangdata.com.cn/' + page.search('#doDownload').attribute('href').value
+    begin
+      page = @agent.get(@url)
+      @real_url = 'http://f.wanfangdata.com.cn/' + page.search('#doDownload').attribute('href').value
+    rescue => e
+      puts e
+      self.get_real_url
+    end
   end
 
   def download
-    puts "Downloading #{@name}\n".colorize(:light_blue)
-    paper = open(@real_url) do |f|
-      f.read
+    puts "Downloading #{@name} #{@url}\n".colorize(:light_blue)
+    begin
+      paper = open(@real_url) do |f|
+        f.read
+      end
+
+      file = File.new "results/#{@name}.pdf", 'w+'
+      file.binmode
+      file << paper
+      file.flush
+      file.close
+
+      puts "#{@name} download complete.\n".colorize(:green)
+    rescue => e
+      puts e
+      # self.download
+      puts "Timeout".colorize(:red)
     end
-
-    file = File.new "results/#{@name}.pdf", 'w+'
-    file.binmode
-    file << paper
-    file.flush
-    file.close
-
-    puts "#{@name} download complete.\n".colorize(:green)
   end
 
 end
