@@ -1,6 +1,8 @@
 require 'find'
 require 'open-uri'
 require 'thread'
+require 'uri'
+require 'fileutils'
 require 'bundler/setup'
 Bundler.require
 
@@ -11,7 +13,9 @@ class Crawler
     @agent = Mechanize.new
     @name = name.gsub(/\:/, "：").gsub(/\"/, "“").gsub(/\</, "《").gsub(/\>/, "》").gsub(/[\*\\\/\|]/, "-")
     @url = url
-    if Dir["results/#{@name}.pdf"].size > 0
+    @path = "results/#{@name}.pdf"
+
+    if Dir[@path].size > 0
       @@skip_num += 1
       puts "Skip #{@@skip_num}th #{@name}\n".colorize(:light_yellow)
     else
@@ -27,11 +31,11 @@ class Crawler
       work_q << file
     end
 
-    workers = (0..3).map do
+    workers = (0..0).map do
       Thread.new do
-          while file = work_q.pop(true)
-            self.new_from_path(file)
-          end
+        while file = work_q.pop(true)
+          self.new_from_path(file)
+        end
       end
     end
     workers.map(&:join)
@@ -64,23 +68,34 @@ class Crawler
   end
 
   def download
-    puts "Downloading #{@name} #{@url}\n".colorize(:light_blue)
     begin
-      paper = open(@real_url) do |f|
-        f.read
+      uri = URI(@real_url)
+      download_path = "downloading/#{@name}.pdf"
+
+      Net::HTTP.start(uri.host, uri.port) do |http|
+        request = Net::HTTP::Get.new uri
+
+        http.request request do |response|
+          total = response['Content-Length'].to_i
+          finish = 0
+
+          File.open download_path, 'w+', binmode: true do |io|
+            response.read_body do |chunk|
+              io.write chunk
+              finish += chunk.size
+              puts "#{@name}:#{finish.to_f / total * 100}%\n".colorize(:blue)
+            end
+          end
+          FileUtils.mv download_path, @path
+        end
       end
 
-      file = File.new "results/#{@name}.pdf", 'w+'
-      file.binmode
-      file << paper
-      file.flush
-      file.close
-
-      puts "#{@name} download complete.\n".colorize(:green)
     rescue => e
-      puts e
-      # self.download
+      File.delete "results/#{@name}.pdf"
       puts "Timeout".colorize(:red)
+      raise e
+
+      # self.download
     end
   end
 

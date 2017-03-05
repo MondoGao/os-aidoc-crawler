@@ -6,6 +6,6 @@ gem "nokogiri"
 gem "mechanize"
 gem "parallel"
 gem "colorize"
-gem "faraday"
+gem "ruby-progressbar"
 
 gem "pry"
