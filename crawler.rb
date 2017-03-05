@@ -71,7 +71,7 @@ class Crawler
   def download
     begin
       uri = URI(@real_url)
-      download_path = "downloading/#{@name}.pdf"
+      download_path = "downloading/#{@name}.pdf.uncomplete"
 
       Net::HTTP.start(uri.host, uri.port) do |http|
         request = Net::HTTP::Get.new uri
