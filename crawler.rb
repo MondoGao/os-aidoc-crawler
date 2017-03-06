@@ -1,3 +1,5 @@
+ARGV[0] ||= 5
+
 require 'find'
 require 'open-uri'
 require 'thread'
@@ -64,6 +66,7 @@ class Crawler
       @real_url = 'http://f.wanfangdata.com.cn/' + page.search('#doDownload').attribute('href').value
     rescue => e
       puts e
+      sleep(10)
       self.get_real_url
     end
   end
@@ -98,11 +101,12 @@ class Crawler
       end
 
     rescue => e
-      puts "Timeout".colorize(:red)
+      puts "Download error for #{@name} #{@url}, pause for one minute.".colorize(:red)
+      sleep 60
       self.download
     end
   end
 
 end
 
-Crawler.start('links', 3)
+Crawler.start('links', ARGV[0].to_i)
