@@ -1,4 +1,5 @@
 ARGV[0] ||= 5
+ARGV[1] ||= 600
 
 require 'find'
 require 'open-uri'
@@ -88,7 +89,7 @@ class Crawler
       uri = URI(@real_url)
       download_path = "downloading/#{@name}.pdf.uncomplete"
 
-      Net::HTTP.start(uri.host, uri.port, open_timeout: 600) do |http|
+      Net::HTTP.start(uri.host, uri.port, open_timeout: ARGV[1].to_i) do |http|
         request = Net::HTTP::Get.new uri
 
         http.request request do |response|
