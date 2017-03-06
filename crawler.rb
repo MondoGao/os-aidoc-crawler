@@ -17,6 +17,7 @@ class Crawler
     @url = url
     @path = "results/#{@name}.pdf"
     @progress_index = progress_index
+    @fail_num = 0
 
     if Dir[@path].size > 0
       @@skip_num += 1
@@ -74,8 +75,11 @@ class Crawler
       @real_url = 'http://f.wanfangdata.com.cn/' + page.search('#doDownload').attribute('href').value
     rescue => e
       puts e
+      @fail_num += 1
       sleep(10)
-      self.get_real_url
+      if @fail_num < 3
+        self.get_real_url
+      end
     end
   end
 
@@ -110,8 +114,11 @@ class Crawler
 
     rescue => e
       puts "Download error for #{@name} #{@url}, pause for one minute.".colorize(:red)
+      @fail_num += 1
       sleep 60
-      self.download
+      if @fail_num < 3
+        self.download
+      end
     end
   end
 
