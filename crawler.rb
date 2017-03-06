@@ -108,11 +108,15 @@ class Crawler
               end
             end
           end
-          unless response.code == '200'
-            raise Excepction.new('Fail')
+          case response.code
+            when '200'
+              puts "#{@name}:100%".colorize(:green)
+              FileUtils.mv download_path, @path
+            when '404'
+              return
+            else
+              raise Excepction.new('Fail')
           end
-          puts "#{@name}:100%".colorize(:green)
-          FileUtils.mv download_path, @path
         end
       end
 
