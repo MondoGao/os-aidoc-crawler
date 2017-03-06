@@ -102,7 +102,7 @@ class Crawler
               finish += chunk.size
               control += 1
               if control > 80
-                puts "Progress #{@progress_index + 1}\t#{@name[0..10]}\t#{(finish.to_f / total * 100).to_s[0..-14]}%".colorize(:blue)
+                puts "Progress #{@progress_index + 1}\t#{@name[0..10]}\t#{(finish.to_f / total * 100).to_s[0..3]}%".colorize(:blue)
                 control = 0
               end
             end
@@ -124,7 +124,6 @@ class Crawler
       end
     end
   end
-
 end
 
 Crawler.start('links', ARGV[0].to_i)
