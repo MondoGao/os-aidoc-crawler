@@ -34,14 +34,22 @@ class Crawler
       work_q << file
     end
 
-    workers = (0..progress_num - 1).map do |i|
-      Thread.new(i) do |i|
-        while file = work_q.pop(true)
-          self.new_from_path(file, i)
+    begin
+      workers = (0..progress_num - 1).map do |i|
+        Thread.new(i) do |i|
+          while file = work_q.pop(true)
+            self.new_from_path(file, i)
+          end
         end
       end
+      workers.map(&:join)
+    rescue ThreadError => e
+      if e.to_s == 'queue empty'
+        puts "Download complete".colorize(:green)
+      else
+        raise e
+      end
     end
-    workers.map(&:join)
   end
 
   def self.get_url_files(path)
