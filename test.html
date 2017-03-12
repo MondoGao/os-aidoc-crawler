@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"a8b83f5bbc","applicationID":"15308483","transactionName":"e1sKRRcKDQhXQUxTDVtBCVQLERJLQVsMQA==","queueTime":0,"applicationTime":69,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1026.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+<title>下载文档 - 快论文</title>
+<script src="/assets/application-b73f2f998d308a3fd9d7e5f83aeb9e7f597330ed74622df2a2377240887f6572.js"></script>
+<link rel="stylesheet" media="all" href="/assets/application-621f55ba1171b6a14c48cd544c62ffe3ff2f8dc036b39de9727396ffbb3434d3.css" />
+<script src="/assets/kindeditor-477319fc02e592eed8157349b4d5c8acb5d49eb153475900313ea80bc61b8f2c.js"></script>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="DtzM3j1xfCvfbrzZ9tLsNIcY6lRc7v1YPqrWdaSz1wx8u1y2g1uz+33jVm2T2TreXFDUpFQkIF48h/dfoUsdfw==" />
+<script>
+//<![CDATA[
+window.gon={};gon.thesisId=3242;gon.documentId=2;gon.documentStatus=10;
+//]]>
+</script>
+</head>
+<body class='documents show'>
+<header>
+<nav class='navbar navbar-inverse navbar-fixed-top editor-header'>
+<div class='container-fluid'>
+<div class='navbar-header'>
+<a class='navbar-brand' href='/'>
+<img width="100" src="/assets/logo2-0304303ce0f7700dca8d9907d0958da532c4b71a7f6d7012795ecdd4f888c7c5.png" alt="Logo2 0304303ce0f7700dca8d9907d0958da532c4b71a7f6d7012795ecdd4f888c7c5" />
+</a>
+</div>
+<div class='collapse navbar-collapse' id='navbar'>
+<ul class='nav navbar-nav'>
+<li>
+<a href="/">首页</a>
+</li>
+<li>
+<a href="/theses">个人中心</a>
+</li>
+<li>
+<a href="/help/part1">帮助</a>
+</li>
+</ul>
+<ul class='nav navbar-nav navbar-right'>
+<li>
+<a href="/theses/3242/documents/2">江高华</a>
+</li>
+<li id='header-coin'>
+<a href="/orders/new">0 币</a>
+</li>
+<li>
+<a data-method='delete' href='/users/sign_out'>注销</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+</header>
+<!-- = render "layouts/flash_messages" -->
+<section class='app-section'>
+<div class='container-fluid'>
+<div class='row main-edit-area'>
+<div class='sidebar-right-container assist-tool'>
+<div class='container-fluid'>
+<h1 class='assist-tool-hd'>
+在线翻译
+</h1>
+<div class='row assist-tool-wrapper'>
+<div class='col-md-4 assist-tool-friendlink'>
+<a href='http://fanyi.baidu.com/?aldtype=16047#zh/en/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="百度翻译" src="/assets/tools/baidufanyi-341d85d9f196df34c29ff120690d2283c3068f04d95e876ac1b86467360c05ed.png" />
+</div>
+</a>
+</div>
+<div class='col-md-4 assist-tool-friendlink'>
+<a href='http://fanyi.youdao.com/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="有道翻译" src="/assets/tools/youdaofanyi-88f0c9b4861606e3d5b0faa0c027d750f370a08d4dab8da4a247a0be5b4b5bc2.png" />
+</div>
+</a>
+</div>
+<div class='col-md-4 assist-tool-friendlink assist-tool-friendlink-right'>
+<div class='assist-tool-imgbox'>
+<a href='http://translate.google.cn/' target='_blank'>
+<img class="interprt" alt="谷歌翻译" src="/assets/tools/googlefanyi-ba3927a9865daf9e65a9547527cb5f91a30bf823a5369e1c2a58ab5e72affb6c.png" />
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class='container-fluid'>
+<h1 class='assist-tool-hd'>
+参考文献
+</h1>
+<div class='row assist-tool-wrapper'>
+<div class='col-md-4 assist-tool-friendlink'>
+<a href='http://www.cnki.net/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="中国知网" src="/assets/tools/zhongzhixueshu-129b187b5fc3d7abd5ad5f39952aa6d0e16f3deee1b2480dd990c00a255e135f.png" />
+</div>
+</a>
+</div>
+<div class='col-md-4 assist-tool-friendlink'>
+<a href='http://xueshu.baidu.com/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="百度学术" src="/assets/tools/baiduxueshu-368a52259d7cfd5f2c041d011a2c4a7d69b7bf15457b043a2939b0d5a9c46ee9.png" />
+</div>
+</a>
+</div>
+<div class='col-md-4 assist-tool-friendlink assist-tool-friendlink-right'>
+<a href='http://scholar.glgoo.org/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="谷歌学术" src="/assets/tools/googlexueshu-5eaf5241d89121fee8106d9149f205c803c4dab2bf48e6bc0c39e80fa77d762a.png" />
+</div>
+</a>
+</div>
+<div class='col-md-4 assist-tool-friendlink assist-tool-friendlink-bottom'>
+<a href='http://www.wanfangdata.com.cn/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="万方数据" src="/assets/tools/wanfangxueshu-cfaabd488475b992458de10932be23438a2e31285bce2b51aa4378be6255b546.png" />
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class='container-fluid'>
+<h1 class='assist-tool-hd'>
+公式编辑器
+</h1>
+<div class='row assist-tool-wrapper'>
+<div class='col-md-4 assist-tool-friendlink'>
+<a href='http://www.wiris.com/editor/demo/en/mathml-latex.html' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="公式编辑器" src="/assets/tools/wiris-bc3df784868da9ac4d4bc58c89f918bca07f5491a4457c2ce2b9013584b099f3.png" />
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+
+<div class='sidebar-left-container categorystyle'>
+<div class='outline-nav'>
+<ul class='list-group'>
+<a class="list-group-item" href="/theses/3242/covers/common">封面</a>
+<a class="list-group-item" href="/theses/3242/openings/1/edit">摘要</a>
+<a class="list-group-item" href="/theses/3242/openings/2/edit">Abstract</a>
+<a class="list-group-item" href="/theses/3242/openings/keyword">关键词</a>
+<a class="list-group-item" href="/theses/3242/contents/3236/edit">目录</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/1/edit">第1章</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/2/edit">第2章</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/3/edit">第3章</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/4/edit">第4章</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/5/edit">第5章</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/6/edit">第6章</a>
+<a class="list-group-item" href="/theses/3242/endings/1/edit">结论</a>
+<a class="list-group-item" href="/theses/3242/endings/2/edit">参考文献</a>
+<a class="list-group-item" href="/theses/3242/endings/3/edit">致谢</a>
+</ul>
+<div data-name='test' data='3242' id='thesis-data'></div>
+</div>
+</div>
+
+<div class='sidebar-right-container tips-dialog sidebar-right-show'>
+<div class='container-fluid'>
+<div class='tips-pin'>
+操作提示
+<button class='close' onclick='closeTips()' type='button'>&times</button>
+</div>
+<div class='tips-content'></div>
+</div>
+</div>
+
+<div aria-labelledby='myModalLabel' class='modal fade gen-content gen-layer' id='payModal' role='dialog' tabindex='-1'>
+<div class='modal-dialog' role='document'>
+<div class='modal-content'>
+<div class='modal-header notice-header-bg'>
+<button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+<span aria-hidden='true'>
+&times
+</span>
+</button>
+<h4 class='modal-title notice-title' id='myModalLabel'>
+下载论文
+</h4>
+</div>
+<div class='modal-body gen-container-warpper'>
+<p class='gen-notice document-label-ctn'>
+<span class='label label-danger title'>注意</span>
+<span class='word'>下载Word版论文需要一定数额的金币，金币不足时请到充值中心充值。</span>
+</p>
+<div class='download-cost'>
+<p class='download-coin'>
+<span class='coin-head'>所需金币：</span>
+<span class='coin-need' id='price-download'>200 金币</span>
+<span>( 10元 = 100金币 )</span>
+</p>
+<p class='download-coin'>
+<span class='coin-head'>账户余额：</span>
+<span id='account-coin'>0 金币</span>
+<span id='coin-need'>（余额不足，还需要200 金币）</span>
+</p>
+</div>
+<p class='gen-notice-2'>
+注：金币支付完成后，这个版本的论文以后可以免费下载，将不会重复收费。
+</p>
+<div class='row'>
+<div class='col-md-6 col-md-offset-3' id='document-recharge'>
+<form class="button_to" method="post" action="/orders"><input formtarget="_blank" class="btn btn-bigger btn-success" type="submit" value="去充值" /><input type="hidden" name="authenticity_token" value="+Uyll8lt2AStnExH6Zq4xukfup26PPovDf3YNOoOAdmLKzX/d0cX1A8RpvOMkW4sMleEbbL2JykP0Pke7/bLqg==" /><input type="hidden" name="order[money]" value="20" /></form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class='modal gen-content gen-layer' id='payValidateModal' role='dialog' tabindex='-1'>
+<div class='modal-dialog' role='document'>
+<div class='modal-content'>
+<div class='modal-header notice-header-bg'>
+<h4 class='modal-title notice-title'>
+支付验证
+</h4>
+</div>
+<div class='modal-body gen-container-warpper'>
+<p class='gen-notice document-label-ctn active'>
+<span class='word warn'>
+支付完成前，请不要关闭此验证窗口。
+<br>
+支付完成后，请根据您支付的情况点击下面按钮，或者重新刷新页面。
+</span>
+</p>
+<p class='gen-notice-2'>
+注：金币支付完成后，这个版本的论文以后可以免费下载，将不会重复收费。
+</p>
+<div class='row'>
+<div class='col-md-12 text-center'>
+<div class='document-pay-ctn'>
+<a class="btn btn-default no" href="/theses/3242/documents/2">支付遇到问题</a>
+<a class="btn btn-success yes" href="/theses/3242/documents/2">支付完成</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class='col-md-12 edit_wrap'>
+<div class='edit_toolbar'>
+<span class='edit_tool edit_tool_enable'>
+<span class='ke-toolbar-icon ke-icon-editor_save' onclick='editorSave()'></span>
+</span>
+<span class='edit_tool edit_tool_enable'>
+<span class='ke-toolbar-icon ke-icon-preview' onclick='previewDocument()'></span>
+</span>
+<span class='edit_tool edit_tool_enable'>
+<span class='ke-toolbar-icon ke-icon-import_word' onclick='importWord()'></span>
+</span>
+<span class='edit_tool edit_tool_enable'>
+<span class='ke-toolbar-icon ke-icon-generate_word' onclick='createDocument()'></span>
+</span>
+<span class='edit_tool edit_tool_enable'>
+<span class='ke-toolbar-icon ke-icon-history_version' onclick='historyVersion()'></span>
+</span>
+<span class='edit-separator'></span>
+<span class='ke-vs edit-cursor'>
+<span class='ke-vs-container'>
+<span class='edit_tool edit_tool_enable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-modify_information' onclick='modifyInfo()'></span>
+</span>
+<span class='edit_tool edit_tool_enable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-modify_template' onclick='modifyTemplate()'></span>
+</span>
+</span>
+</span>
+<span class='edit-separator'></span>
+<span class='ke-vs edit-cursor'>
+<span class='ke-vs-container edit_tool_disable'>
+<span class='ke-vs-outline'>
+<span class='ke-toolbar-icon ke-icon-undo'></span>
+</span>
+<span class='ke-vs-outline'>
+<span class='ke-toolbar-icon ke-icon-redo'></span>
+</span>
+</span>
+</span>
+<span class='edit-separator'></span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-title_one'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-title_two'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-title_three'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-title_content'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-order_list'></span>
+</span>
+<span class='edit-separator'></span>
+<span class='ke-vs edit-cursor'>
+<span class='ke-vs-container edit_tool_disable'>
+<span class='ke-vs-outline'>
+<span class='ke-toolbar-icon ke-icon-superscript'></span>
+</span>
+<span class='ke-vs-outline'>
+<span class='ke-toolbar-icon ke-icon-subscript'></span>
+</span>
+</span>
+</span>
+<span class='edit-separator'></span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-table'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-image disabled'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-formula'></span>
+</span>
+<span class='edit-separator'></span>
+<span class='ke-vs edit-cursor'>
+<span class='ke-vs-container'>
+<span class='edit_tool edit_tool_enable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-category' onclick='categoryToggle()'></span>
+</span>
+<span class='edit_tool edit_tool_disable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-references'></span>
+</span>
+</span>
+</span>
+<span class='ke-vs edit-cursor'>
+<span class='ke-vs-container'>
+<span class='edit_tool edit_tool_enable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-assist_tool' onclick='assistToolToggle()'></span>
+</span>
+<span class='edit_tool edit_tool_enable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-hide' onclick='hideSideBar()'></span>
+</span>
+</span>
+</span>
+<span class='edit-separator'></span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-auto_layout'></span>
+</span>
+
+</div>
+<div class='edit_area_wrap'>
+<div class='edit_area'>
+<div class='show-document'>
+<h3 class='theses-hd'>
+生成论文
+</h3>
+<div class='document-download-ctn'>
+<div class='progress'>
+<div aria-valuemax='100' aria-valuemin='0' aria-valuenow='50' class='progress-bar progress-bar-striped active' role='progressbar'></div>
+</div>
+<p id='document-status'>
+<span class='glyphicon glyphicon-exclamation-sign'></span>
+生成论文处理中，请您耐心等待，大约需要1分钟
+</p>
+<p class='document-link-ctn' id='document-link'>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='toolbar-ctn editor-toolbar'>
+<ul>
+<li class='toolbar-user'>
+<a href="/theses"></a>
+<em class='toolbar-text'>
+个人中心
+</em>
+</li>
+<li class='toolbar-service'>
+<em class='toolbar-text toolbar-service-ctn'>
+<a target="_blank" class="toolbar-kefu" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2641286358&amp;site=qq&amp;menu=yes">客服1</a>
+<a target="_blank" class="toolbar-kefu" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1848437834&amp;site=qq&amp;menu=yes">客服2</a>
+</em>
+</li>
+<li class='toolbar-feedback'>
+<a href="/posts/new"></a>
+<em class='toolbar-text'>
+问题反馈
+</em>
+</li>
+<li class='toolbar-gotop'>
+<em class='toolbar-text'>
+回到顶部
+</em>
+</li>
+</ul>
+</div>
+
+
+</div>
+</section>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"a8b83f5bbc","applicationID":"15308483","transactionName":"e1sKRRcKDQhXQUxTDVtBCVQLERJLQVsMQA==","queueTime":0,"applicationTime":69,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1026.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+<title>下载文档 - 快论文</title>
+<script src="/assets/application-b73f2f998d308a3fd9d7e5f83aeb9e7f597330ed74622df2a2377240887f6572.js"></script>
+<link rel="stylesheet" media="all" href="/assets/application-621f55ba1171b6a14c48cd544c62ffe3ff2f8dc036b39de9727396ffbb3434d3.css" />
+<script src="/assets/kindeditor-477319fc02e592eed8157349b4d5c8acb5d49eb153475900313ea80bc61b8f2c.js"></script>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="DtzM3j1xfCvfbrzZ9tLsNIcY6lRc7v1YPqrWdaSz1wx8u1y2g1uz+33jVm2T2TreXFDUpFQkIF48h/dfoUsdfw==" />
+<script>
+//<![CDATA[
+window.gon={};gon.thesisId=3242;gon.documentId=2;gon.documentStatus=10;
+//]]>
+</script>
+</head>
+<body class='documents show'>
+<header>
+<nav class='navbar navbar-inverse navbar-fixed-top editor-header'>
+<div class='container-fluid'>
+<div class='navbar-header'>
+<a class='navbar-brand' href='/'>
+<img width="100" src="/assets/logo2-0304303ce0f7700dca8d9907d0958da532c4b71a7f6d7012795ecdd4f888c7c5.png" alt="Logo2 0304303ce0f7700dca8d9907d0958da532c4b71a7f6d7012795ecdd4f888c7c5" />
+</a>
+</div>
+<div class='collapse navbar-collapse' id='navbar'>
+<ul class='nav navbar-nav'>
+<li>
+<a href="/">首页</a>
+</li>
+<li>
+<a href="/theses">个人中心</a>
+</li>
+<li>
+<a href="/help/part1">帮助</a>
+</li>
+</ul>
+<ul class='nav navbar-nav navbar-right'>
+<li>
+<a href="/theses/3242/documents/2">江高华</a>
+</li>
+<li id='header-coin'>
+<a href="/orders/new">0 币</a>
+</li>
+<li>
+<a data-method='delete' href='/users/sign_out'>注销</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+</header>
+<!-- = render "layouts/flash_messages" -->
+<section class='app-section'>
+<div class='container-fluid'>
+<div class='row main-edit-area'>
+<div class='sidebar-right-container assist-tool'>
+<div class='container-fluid'>
+<h1 class='assist-tool-hd'>
+在线翻译
+</h1>
+<div class='row assist-tool-wrapper'>
+<div class='col-md-4 assist-tool-friendlink'>
+<a href='http://fanyi.baidu.com/?aldtype=16047#zh/en/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="百度翻译" src="/assets/tools/baidufanyi-341d85d9f196df34c29ff120690d2283c3068f04d95e876ac1b86467360c05ed.png" />
+</div>
+</a>
+</div>
+<div class='col-md-4 assist-tool-friendlink'>
+<a href='http://fanyi.youdao.com/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="有道翻译" src="/assets/tools/youdaofanyi-88f0c9b4861606e3d5b0faa0c027d750f370a08d4dab8da4a247a0be5b4b5bc2.png" />
+</div>
+</a>
+</div>
+<div class='col-md-4 assist-tool-friendlink assist-tool-friendlink-right'>
+<div class='assist-tool-imgbox'>
+<a href='http://translate.google.cn/' target='_blank'>
+<img class="interprt" alt="谷歌翻译" src="/assets/tools/googlefanyi-ba3927a9865daf9e65a9547527cb5f91a30bf823a5369e1c2a58ab5e72affb6c.png" />
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class='container-fluid'>
+<h1 class='assist-tool-hd'>
+参考文献
+</h1>
+<div class='row assist-tool-wrapper'>
+<div class='col-md-4 assist-tool-friendlink'>
+<a href='http://www.cnki.net/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="中国知网" src="/assets/tools/zhongzhixueshu-129b187b5fc3d7abd5ad5f39952aa6d0e16f3deee1b2480dd990c00a255e135f.png" />
+</div>
+</a>
+</div>
+<div class='col-md-4 assist-tool-friendlink'>
+<a href='http://xueshu.baidu.com/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="百度学术" src="/assets/tools/baiduxueshu-368a52259d7cfd5f2c041d011a2c4a7d69b7bf15457b043a2939b0d5a9c46ee9.png" />
+</div>
+</a>
+</div>
+<div class='col-md-4 assist-tool-friendlink assist-tool-friendlink-right'>
+<a href='http://scholar.glgoo.org/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="谷歌学术" src="/assets/tools/googlexueshu-5eaf5241d89121fee8106d9149f205c803c4dab2bf48e6bc0c39e80fa77d762a.png" />
+</div>
+</a>
+</div>
+<div class='col-md-4 assist-tool-friendlink assist-tool-friendlink-bottom'>
+<a href='http://www.wanfangdata.com.cn/' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="万方数据" src="/assets/tools/wanfangxueshu-cfaabd488475b992458de10932be23438a2e31285bce2b51aa4378be6255b546.png" />
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class='container-fluid'>
+<h1 class='assist-tool-hd'>
+公式编辑器
+</h1>
+<div class='row assist-tool-wrapper'>
+<div class='col-md-4 assist-tool-friendlink'>
+<a href='http://www.wiris.com/editor/demo/en/mathml-latex.html' target='_blank'>
+<div class='assist-tool-imgbox'>
+<img class="interprt" alt="公式编辑器" src="/assets/tools/wiris-bc3df784868da9ac4d4bc58c89f918bca07f5491a4457c2ce2b9013584b099f3.png" />
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+
+<div class='sidebar-left-container categorystyle'>
+<div class='outline-nav'>
+<ul class='list-group'>
+<a class="list-group-item" href="/theses/3242/covers/common">封面</a>
+<a class="list-group-item" href="/theses/3242/openings/1/edit">摘要</a>
+<a class="list-group-item" href="/theses/3242/openings/2/edit">Abstract</a>
+<a class="list-group-item" href="/theses/3242/openings/keyword">关键词</a>
+<a class="list-group-item" href="/theses/3242/contents/3236/edit">目录</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/1/edit">第1章</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/2/edit">第2章</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/3/edit">第3章</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/4/edit">第4章</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/5/edit">第5章</a>
+<a class="list-group-item" href="/theses/3242/mainbodies/6/edit">第6章</a>
+<a class="list-group-item" href="/theses/3242/endings/1/edit">结论</a>
+<a class="list-group-item" href="/theses/3242/endings/2/edit">参考文献</a>
+<a class="list-group-item" href="/theses/3242/endings/3/edit">致谢</a>
+</ul>
+<div data-name='test' data='3242' id='thesis-data'></div>
+</div>
+</div>
+
+<div class='sidebar-right-container tips-dialog sidebar-right-show'>
+<div class='container-fluid'>
+<div class='tips-pin'>
+操作提示
+<button class='close' onclick='closeTips()' type='button'>&times</button>
+</div>
+<div class='tips-content'></div>
+</div>
+</div>
+
+<div aria-labelledby='myModalLabel' class='modal fade gen-content gen-layer' id='payModal' role='dialog' tabindex='-1'>
+<div class='modal-dialog' role='document'>
+<div class='modal-content'>
+<div class='modal-header notice-header-bg'>
+<button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+<span aria-hidden='true'>
+&times
+</span>
+</button>
+<h4 class='modal-title notice-title' id='myModalLabel'>
+下载论文
+</h4>
+</div>
+<div class='modal-body gen-container-warpper'>
+<p class='gen-notice document-label-ctn'>
+<span class='label label-danger title'>注意</span>
+<span class='word'>下载Word版论文需要一定数额的金币，金币不足时请到充值中心充值。</span>
+</p>
+<div class='download-cost'>
+<p class='download-coin'>
+<span class='coin-head'>所需金币：</span>
+<span class='coin-need' id='price-download'>200 金币</span>
+<span>( 10元 = 100金币 )</span>
+</p>
+<p class='download-coin'>
+<span class='coin-head'>账户余额：</span>
+<span id='account-coin'>0 金币</span>
+<span id='coin-need'>（余额不足，还需要200 金币）</span>
+</p>
+</div>
+<p class='gen-notice-2'>
+注：金币支付完成后，这个版本的论文以后可以免费下载，将不会重复收费。
+</p>
+<div class='row'>
+<div class='col-md-6 col-md-offset-3' id='document-recharge'>
+<form class="button_to" method="post" action="/orders"><input formtarget="_blank" class="btn btn-bigger btn-success" type="submit" value="去充值" /><input type="hidden" name="authenticity_token" value="+Uyll8lt2AStnExH6Zq4xukfup26PPovDf3YNOoOAdmLKzX/d0cX1A8RpvOMkW4sMleEbbL2JykP0Pke7/bLqg==" /><input type="hidden" name="order[money]" value="20" /></form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class='modal gen-content gen-layer' id='payValidateModal' role='dialog' tabindex='-1'>
+<div class='modal-dialog' role='document'>
+<div class='modal-content'>
+<div class='modal-header notice-header-bg'>
+<h4 class='modal-title notice-title'>
+支付验证
+</h4>
+</div>
+<div class='modal-body gen-container-warpper'>
+<p class='gen-notice document-label-ctn active'>
+<span class='word warn'>
+支付完成前，请不要关闭此验证窗口。
+<br>
+支付完成后，请根据您支付的情况点击下面按钮，或者重新刷新页面。
+</span>
+</p>
+<p class='gen-notice-2'>
+注：金币支付完成后，这个版本的论文以后可以免费下载，将不会重复收费。
+</p>
+<div class='row'>
+<div class='col-md-12 text-center'>
+<div class='document-pay-ctn'>
+<a class="btn btn-default no" href="/theses/3242/documents/2">支付遇到问题</a>
+<a class="btn btn-success yes" href="/theses/3242/documents/2">支付完成</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class='col-md-12 edit_wrap'>
+<div class='edit_toolbar'>
+<span class='edit_tool edit_tool_enable'>
+<span class='ke-toolbar-icon ke-icon-editor_save' onclick='editorSave()'></span>
+</span>
+<span class='edit_tool edit_tool_enable'>
+<span class='ke-toolbar-icon ke-icon-preview' onclick='previewDocument()'></span>
+</span>
+<span class='edit_tool edit_tool_enable'>
+<span class='ke-toolbar-icon ke-icon-import_word' onclick='importWord()'></span>
+</span>
+<span class='edit_tool edit_tool_enable'>
+<span class='ke-toolbar-icon ke-icon-generate_word' onclick='createDocument()'></span>
+</span>
+<span class='edit_tool edit_tool_enable'>
+<span class='ke-toolbar-icon ke-icon-history_version' onclick='historyVersion()'></span>
+</span>
+<span class='edit-separator'></span>
+<span class='ke-vs edit-cursor'>
+<span class='ke-vs-container'>
+<span class='edit_tool edit_tool_enable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-modify_information' onclick='modifyInfo()'></span>
+</span>
+<span class='edit_tool edit_tool_enable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-modify_template' onclick='modifyTemplate()'></span>
+</span>
+</span>
+</span>
+<span class='edit-separator'></span>
+<span class='ke-vs edit-cursor'>
+<span class='ke-vs-container edit_tool_disable'>
+<span class='ke-vs-outline'>
+<span class='ke-toolbar-icon ke-icon-undo'></span>
+</span>
+<span class='ke-vs-outline'>
+<span class='ke-toolbar-icon ke-icon-redo'></span>
+</span>
+</span>
+</span>
+<span class='edit-separator'></span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-title_one'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-title_two'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-title_three'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-title_content'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-order_list'></span>
+</span>
+<span class='edit-separator'></span>
+<span class='ke-vs edit-cursor'>
+<span class='ke-vs-container edit_tool_disable'>
+<span class='ke-vs-outline'>
+<span class='ke-toolbar-icon ke-icon-superscript'></span>
+</span>
+<span class='ke-vs-outline'>
+<span class='ke-toolbar-icon ke-icon-subscript'></span>
+</span>
+</span>
+</span>
+<span class='edit-separator'></span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-table'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-image disabled'></span>
+</span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-formula'></span>
+</span>
+<span class='edit-separator'></span>
+<span class='ke-vs edit-cursor'>
+<span class='ke-vs-container'>
+<span class='edit_tool edit_tool_enable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-category' onclick='categoryToggle()'></span>
+</span>
+<span class='edit_tool edit_tool_disable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-references'></span>
+</span>
+</span>
+</span>
+<span class='ke-vs edit-cursor'>
+<span class='ke-vs-container'>
+<span class='edit_tool edit_tool_enable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-assist_tool' onclick='assistToolToggle()'></span>
+</span>
+<span class='edit_tool edit_tool_enable edit-margin edit-clear'>
+<span class='ke-toolbar-icon ke-icon-hide' onclick='hideSideBar()'></span>
+</span>
+</span>
+</span>
+<span class='edit-separator'></span>
+<span class='edit_tool edit_tool_disable'>
+<span class='ke-toolbar-icon ke-icon-auto_layout'></span>
+</span>
+
+</div>
+<div class='edit_area_wrap'>
+<div class='edit_area'>
+<div class='show-document'>
+<h3 class='theses-hd'>
+生成论文
+</h3>
+<div class='document-download-ctn'>
+<div class='progress'>
+<div aria-valuemax='100' aria-valuemin='0' aria-valuenow='50' class='progress-bar progress-bar-striped active' role='progressbar'></div>
+</div>
+<p id='document-status'>
+<span class='glyphicon glyphicon-exclamation-sign'></span>
+生成论文处理中，请您耐心等待，大约需要1分钟
+</p>
+<p class='document-link-ctn' id='document-link'>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='toolbar-ctn editor-toolbar'>
+<ul>
+<li class='toolbar-user'>
+<a href="/theses"></a>
+<em class='toolbar-text'>
+个人中心
+</em>
+</li>
+<li class='toolbar-service'>
+<em class='toolbar-text toolbar-service-ctn'>
+<a target="_blank" class="toolbar-kefu" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2641286358&amp;site=qq&amp;menu=yes">客服1</a>
+<a target="_blank" class="toolbar-kefu" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1848437834&amp;site=qq&amp;menu=yes">客服2</a>
+</em>
+</li>
+<li class='toolbar-feedback'>
+<a href="/posts/new"></a>
+<em class='toolbar-text'>
+问题反馈
+</em>
+</li>
+<li class='toolbar-gotop'>
+<em class='toolbar-text'>
+回到顶部
+</em>
+</li>
+</ul>
+</div>
+
+
+</div>
+</section>
+</body>
+</html>
