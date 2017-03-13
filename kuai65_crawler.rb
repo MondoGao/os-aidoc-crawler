@@ -18,17 +18,22 @@ login_form['user[password]'] = '#&&j8jKa9YW3'
 agent.submit login_form
 
 data.each do |paper|
-  agent.get('http://www.kuai65.com/theses/3242/templates/edit')
-  agent.page.form['standard_id'] = paper['id']
-  agent.submit agent.page.form
-  agent.click agent.page.at_css('.ke-icon-generate_word')
-  agent.submit agent.page.form
-  download_link = agent.page.links.select {|link| link.href.match /ft\=pdf/}[0]
-  while !download_link
-    sleep 1
-    agent.get agent.page.uri.to_s
+  unless Dir["templates/#{paper['name']}.pdf"].size > 0
+    puts "#{paper['name']} start"
+    agent.get('http://www.kuai65.com/theses/3242/templates/edit')
+    agent.page.form['standard_id'] = paper['id']
+    agent.submit agent.page.form
+    agent.click agent.page.at_css('.ke-icon-generate_word')
+    agent.submit agent.page.form
     download_link = agent.page.links.select {|link| link.href.match /ft\=pdf/}[0]
+    while !download_link
+      sleep 1
+      agent.get agent.page.uri.to_s
+      download_link = agent.page.links.select {|link| link.href.match /ft\=pdf/}[0]
+    end
+    agent.download(download_link.href, "templates/#{paper['name']}.pdf")
+    puts "#{paper['name']} downloaded"
+  else
+    puts "Skip #{paper['name']}"
   end
-  agent.download(download_link.href, "templates/#{paper['name']}.pdf")
 end
-binding.pry
